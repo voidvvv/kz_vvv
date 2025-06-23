@@ -1,4 +1,4 @@
-#include "algorithm.h"
+#include "kz_algorithm.h"
 #include <iostream>
 
 int add(int a, int b)
@@ -92,6 +92,60 @@ void setZeroes(std::vector<std::vector<int>> &matrix)
             }
         }
     }
+}
+
+std::vector<std::vector<int>> threeSum(std::vector<int>& nums)
+{
+    std::sort(nums.begin(), nums.end());
+    int left = 0;
+    int n = nums.size();
+    std::vector<std::vector<int>> ans;
+    while (left < n - 2) {
+        if (left > 0 && nums[left] == nums[left - 1]) {
+            left++;
+            continue; // Skip duplicates
+        }
+        int mid = left + 1;
+        int right = n - 1;
+        while (mid < right) {
+                int sum = nums[left] + nums[mid] + nums[right];
+            if (sum < 0) {
+                mid++;
+            } else if (sum > 0) {
+                right--;
+            } else {
+                ans.push_back({nums[left], nums[mid], nums[right]});
+                while (mid < right && nums[mid] == nums[mid + 1]) {
+                    mid++; // Skip duplicates
+                }
+                while (mid < right && nums[right] == nums[right - 1]) {
+                    right--; // Skip duplicates
+                }
+                mid++;
+                right--;
+            }
+        }
+        left++;
+    }
+    return ans;
+}
+
+int maxArea(std::vector<int> &height)
+{
+    int left = 0;
+    int right = height.size() - 1;
+    int maxArea = 0;
+
+    while (left < right) {
+        int curArea = abs(left - right) * std::min(height[left], height[right]);
+        maxArea = std::max(maxArea, curArea);
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    return maxArea;
 }
 
 LRUCache::LRUCache(int capacity) : capacity(capacity), size(0)
@@ -216,3 +270,4 @@ ListNode *reverseList(ListNode *head)
     }
     return dummyHead->next;
 }
+

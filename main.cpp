@@ -1,6 +1,6 @@
 #include <iostream>
 #include "hello.h"
-#include "algorithm.h"
+#include "kz_algorithm.h"
 void test01();
 void test2();
 int main(int, char**){
@@ -8,6 +8,7 @@ int main(int, char**){
     test2();
     
 }
+
 
 void test2 () {
     LRUCache lru(1);
