@@ -1,0 +1,7 @@
+# Exclude build directory
+build/
+
+# Exclude VS Code settings
+.vscode/
+
+**/*.exe
