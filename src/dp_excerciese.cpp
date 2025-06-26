@@ -171,3 +171,58 @@ int minFallingPathSum(vector<vector<int>> &matrix)
     }
     return ans; // Return the minimum value from the last row
 }
+
+
+int minFallingPathSum2(vector<vector<int>>& grid) {
+    int n = grid.size();
+    vector<vector<int>> dp(2, vector<int>(n, 0));
+    int last = 0;
+    int cur = 1;
+    int ans = INT_MAX;
+
+    int minIndex = -1;
+    int minIndex2 = -1;
+    for (int x = 0; x < n; x++) {
+        dp[0][x] = grid[0][x]; // Initialize the first row
+        ans = min(ans, dp[0][x]); // Find the minimum in the first row
+        if (minIndex == -1 || dp[0][x] < dp[0][minIndex]) {
+            minIndex2 = minIndex;
+            minIndex = x; // Update the minimum index
+        } else if (minIndex2 == -1 || dp[0][x] < dp[0][minIndex2]) {
+            minIndex2 = x; // Update the second minimum index
+        }
+    }
+
+    for (int i = 1; i < n; i++) {
+        int curMin = INT_MAX;
+        int curMinIndex = -1;
+        int curMinIndex2 = -1;
+        for (int j = 0; j < n; j++) {
+            int cVal = INT_MAX;
+            if (j != minIndex) {
+                cVal = min(cVal, dp[last][minIndex] + grid[i][j]); // From the left diagonal
+            }
+            else if (j != minIndex2) {
+                cVal = min(cVal, dp[last][minIndex2] + grid[i][j]); // From the right diagonal
+            }
+            dp[cur][j] = cVal; // Update the current cell
+            if (curMinIndex == -1 || cVal < dp[cur][curMinIndex]) {
+                curMinIndex2 = curMinIndex;
+                curMinIndex = j; // Update the current minimum index
+            } else if (curMinIndex2 == -1 || cVal < dp[cur][curMinIndex2]) {
+                curMinIndex2 = j; // Update the second current minimum index
+            }
+            
+            curMin = min(curMin, dp[cur][j]); // Find the minimum in the current row
+        
+        }
+        minIndex = curMinIndex;
+        minIndex2 = curMinIndex2;
+        ans = curMin;
+        int tmp = last;
+        last = cur;
+        cur = tmp; // Swap last and cur
+    }
+
+    return ans;
+}
