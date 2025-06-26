@@ -5,6 +5,7 @@
 #include <map>
 #include <cmath>
 #include <algorithm>
+#include <stack>
 using namespace std;
 int uniquePaths(int m, int n);
 
@@ -23,5 +24,9 @@ int minFallingPathSum(vector<vector<int>>& matrix);
 
 int minFallingPathSum2(vector<vector<int>>& grid);
 
+
+int countRoutes(vector<int>& locations, int start, int finish, int fuel);
+
+int maximalSquare(vector<vector<char>> &matrix);
 #endif // DP_EXCERSISE_H
 
