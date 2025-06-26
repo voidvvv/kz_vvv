@@ -3,7 +3,16 @@
 #include <iostream>
 #include <vector>
 
-class Node;
+class Node
+{
+public:
+    int key;
+    int value;
+    Node *prev;
+    Node *next;
+    Node();
+    Node(int k, int v);
+};
 class LRUCache;
 
 class LRUCache
@@ -11,7 +20,7 @@ class LRUCache
     int capacity;
     int size;
     std::vector<Node *> cache = std::vector<Node *>(10001, nullptr); // Using a vector to store nodes for simplicity
-    Node *dummyHead;                              // Dummy head node
+     Node * const dummyHead = new Node();                              // Dummy head node
     Node *dummyTail;
 
 public:
@@ -24,15 +33,6 @@ private:
     Node* getNode(int key);
 };
 
-class Node
-{
-public:
-    int key;
-    int value;
-    Node *prev;
-    Node *next;
-    Node();
-    Node(int k, int v);
-};
+
 
 #endif // __LRUCACHE_H__

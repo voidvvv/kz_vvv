@@ -130,6 +130,31 @@ std::vector<std::vector<int>> threeSum(std::vector<int>& nums)
     return ans;
 }
 
+std::vector<int> findKDistantIndices(std::vector<int>& nums, int key, int k)
+{
+    std::vector<int> result;
+    int n = nums.size();
+    int l = 0;
+    int r = 0;
+    for (int i = 0; i < n; i++) {
+        if (nums[i] == key) {
+            l = std::max(r, i - k);
+            r = std::min(static_cast<int>(nums.size() - 1), i + k) + 1;
+            for (int j = l; j < r; j++) {
+                result.push_back(j);
+            }
+            
+        }
+    
+    }
+    return result;
+}
+
+int longestSubsequence(std::string s, int k)
+{
+    
+}
+
 int maxArea(std::vector<int> &height)
 {
     int left = 0;
@@ -150,7 +175,6 @@ int maxArea(std::vector<int> &height)
 
 LRUCache::LRUCache(int capacity) : capacity(capacity), size(0)
 {
-    dummyHead = new Node();
     dummyTail = nullptr;
 }
 

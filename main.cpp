@@ -5,9 +5,13 @@ void test01();
 void test2();
 int main(int, char**){
 
-    test2();
+    bool arr[55] = {5};
+    std::cout << "Hello, World!" << std::endl;
+    std::cout << arr[3] << std::endl;
     
 }
+
+
 
 
 void test2 () {
