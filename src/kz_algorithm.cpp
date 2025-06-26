@@ -152,7 +152,7 @@ std::vector<int> findKDistantIndices(std::vector<int>& nums, int key, int k)
 
 int longestSubsequence(std::string s, int k)
 {
-    
+    return 0;
 }
 
 int maxArea(std::vector<int> &height)
