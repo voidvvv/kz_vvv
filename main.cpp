@@ -1,13 +1,15 @@
 #include <iostream>
 #include "hello.h"
 #include "kz_algorithm.h"
+
+#include "kmp.h"
 void test01();
 void test2();
 int main(int, char**){
-
-    bool arr[55] = {5};
+    std::string s = "ababcababd";
+    std::string p = "ababd";
+    std::cout << "Start of pattern: " << startOf(s, p) << std::endl;
     std::cout << "Hello, World!" << std::endl;
-    std::cout << arr[3] << std::endl;
     
 }
 

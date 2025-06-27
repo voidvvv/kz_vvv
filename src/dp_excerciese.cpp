@@ -2,14 +2,7 @@
 
 int uniquePaths(int m, int n)
 {
-    int dp[m][n];
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            dp[i][j] = 0;
-        }
-    }
+    vector<vector<int>> dp(m, vector<int>(n, 0));
     dp[0][0] = 1;
 
     for (int i = 0; i < m; i++)
@@ -241,12 +234,14 @@ int minFallingPathSum2(vector<vector<int>> &grid)
     return ans;
 }
 
+
+int dfs(vector<int> &locations, int cur, int finish, int fuel, vector<vector<int>> &cache);
 int countRoutes(vector<int> &locations, int start, int finish, int fuel)
 {
     int n = locations.size();
     vector<vector<int>> cache(n, vector<int>(fuel + 1, -1));
-
-    return dfs(locations, start, finish, fuel, cache);
+    int ans = dfs(locations, start, finish, fuel, cache);
+    return ans;
 }
 
 int dfs(vector<int> &locations, int cur, int finish, int fuel, vector<vector<int>> &cache)
