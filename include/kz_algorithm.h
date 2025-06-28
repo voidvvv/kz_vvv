@@ -5,6 +5,7 @@
 #include <map>
 #include <cmath>
 #include <algorithm>
+#include <queue>
 #include "LRUCache.h"
 #include "ListNode.h"
 
@@ -47,4 +48,6 @@ The empty string is considered to be equal to 0.
 A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
  */
 int longestSubsequence(std::string s, int k);
+
+std::vector<int> maxSubsequence(std::vector<int>& nums, int k);
 #endif // __ALGORITHM_H__

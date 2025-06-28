@@ -155,6 +155,43 @@ int longestSubsequence(std::string s, int k)
     return 0;
 }
 
+bool comp (std::pair<int, int> &a, std::pair<int, int> &b)
+{
+    return a.first > b.first;
+
+}
+
+
+bool comp2 (std::pair<int, int> &a, std::pair<int, int> &b)
+{
+    return a.second < b.second;
+
+}
+
+std::vector<int> maxSubsequence(std::vector<int>& nums, int k)
+{
+    int n = nums.size();
+    std::vector<std::pair<int,int>> pairs;
+    for (int i = 0; i < n; i++) {
+        pairs.push_back({nums[i], i});
+    }
+    std::sort(pairs.begin(), pairs.end(), [](const auto& a, const auto& b) {
+        return a.first > b.first;
+    });
+    std::vector<std::pair<int,int>> partAns;
+    for (int i = 0; i < k; i++) {
+        partAns.push_back(pairs[i]);
+    }
+    std::sort(partAns.begin(), partAns.end(), [](const auto& a, const auto& b) {
+        return a.second < b.second;
+    });
+    std::vector<int> ans;
+    for (int i = 0; i < k; i++) {
+        ans.push_back(partAns[i].first);
+    }
+    return ans;
+}
+
 int maxArea(std::vector<int> &height)
 {
     int left = 0;
