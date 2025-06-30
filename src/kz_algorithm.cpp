@@ -332,3 +332,19 @@ ListNode *reverseList(ListNode *head)
     return dummyHead->next;
 }
 
+
+int rob(std::vector<int>& nums) {
+    if (nums.size() == 1) {
+        return nums[0];
+    }
+    int p = nums[0];
+    int pp = std::max(nums[1], nums[0]);
+    for (int x= 2; x < nums.size(); x++) {
+        int cur = std::max(pp, p + nums[x]);
+        p = pp;
+        pp = cur;
+    }
+    return pp;
+
+}
+

@@ -50,4 +50,10 @@ A subsequence is a string that can be derived from another string by deleting so
 int longestSubsequence(std::string s, int k);
 
 std::vector<int> maxSubsequence(std::vector<int>& nums, int k);
+
+/*
+# 198 House Robber
+You are a professional robber planning to rob houses along a street. Each house has a certain amount
+*/
+int rob(std::vector<int>& nums);
 #endif // __ALGORITHM_H__
