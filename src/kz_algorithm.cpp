@@ -94,31 +94,41 @@ void setZeroes(std::vector<std::vector<int>> &matrix)
     }
 }
 
-std::vector<std::vector<int>> threeSum(std::vector<int>& nums)
+std::vector<std::vector<int>> threeSum(std::vector<int> &nums)
 {
     std::sort(nums.begin(), nums.end());
     int left = 0;
     int n = nums.size();
     std::vector<std::vector<int>> ans;
-    while (left < n - 2) {
-        if (left > 0 && nums[left] == nums[left - 1]) {
+    while (left < n - 2)
+    {
+        if (left > 0 && nums[left] == nums[left - 1])
+        {
             left++;
             continue; // Skip duplicates
         }
         int mid = left + 1;
         int right = n - 1;
-        while (mid < right) {
-                int sum = nums[left] + nums[mid] + nums[right];
-            if (sum < 0) {
+        while (mid < right)
+        {
+            int sum = nums[left] + nums[mid] + nums[right];
+            if (sum < 0)
+            {
                 mid++;
-            } else if (sum > 0) {
+            }
+            else if (sum > 0)
+            {
                 right--;
-            } else {
+            }
+            else
+            {
                 ans.push_back({nums[left], nums[mid], nums[right]});
-                while (mid < right && nums[mid] == nums[mid + 1]) {
+                while (mid < right && nums[mid] == nums[mid + 1])
+                {
                     mid++; // Skip duplicates
                 }
-                while (mid < right && nums[right] == nums[right - 1]) {
+                while (mid < right && nums[right] == nums[right - 1])
+                {
                     right--; // Skip duplicates
                 }
                 mid++;
@@ -130,22 +140,23 @@ std::vector<std::vector<int>> threeSum(std::vector<int>& nums)
     return ans;
 }
 
-std::vector<int> findKDistantIndices(std::vector<int>& nums, int key, int k)
+std::vector<int> findKDistantIndices(std::vector<int> &nums, int key, int k)
 {
     std::vector<int> result;
     int n = nums.size();
     int l = 0;
     int r = 0;
-    for (int i = 0; i < n; i++) {
-        if (nums[i] == key) {
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == key)
+        {
             l = std::max(r, i - k);
             r = std::min(static_cast<int>(nums.size() - 1), i + k) + 1;
-            for (int j = l; j < r; j++) {
+            for (int j = l; j < r; j++)
+            {
                 result.push_back(j);
             }
-            
         }
-    
     }
     return result;
 }
@@ -155,38 +166,36 @@ int longestSubsequence(std::string s, int k)
     return 0;
 }
 
-bool comp (std::pair<int, int> &a, std::pair<int, int> &b)
+bool comp(std::pair<int, int> &a, std::pair<int, int> &b)
 {
     return a.first > b.first;
-
 }
 
-
-bool comp2 (std::pair<int, int> &a, std::pair<int, int> &b)
+bool comp2(std::pair<int, int> &a, std::pair<int, int> &b)
 {
     return a.second < b.second;
-
 }
 
-std::vector<int> maxSubsequence(std::vector<int>& nums, int k)
+std::vector<int> maxSubsequence(std::vector<int> &nums, int k)
 {
     int n = nums.size();
-    std::vector<std::pair<int,int>> pairs;
-    for (int i = 0; i < n; i++) {
+    std::vector<std::pair<int, int>> pairs;
+    for (int i = 0; i < n; i++)
+    {
         pairs.push_back({nums[i], i});
     }
-    std::sort(pairs.begin(), pairs.end(), [](const auto& a, const auto& b) {
-        return a.first > b.first;
-    });
-    std::vector<std::pair<int,int>> partAns;
-    for (int i = 0; i < k; i++) {
+    std::sort(pairs.begin(), pairs.end(), [](const auto &a, const auto &b)
+              { return a.first > b.first; });
+    std::vector<std::pair<int, int>> partAns;
+    for (int i = 0; i < k; i++)
+    {
         partAns.push_back(pairs[i]);
     }
-    std::sort(partAns.begin(), partAns.end(), [](const auto& a, const auto& b) {
-        return a.second < b.second;
-    });
+    std::sort(partAns.begin(), partAns.end(), [](const auto &a, const auto &b)
+              { return a.second < b.second; });
     std::vector<int> ans;
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i < k; i++)
+    {
         ans.push_back(partAns[i].first);
     }
     return ans;
@@ -198,12 +207,16 @@ int maxArea(std::vector<int> &height)
     int right = height.size() - 1;
     int maxArea = 0;
 
-    while (left < right) {
+    while (left < right)
+    {
         int curArea = abs(left - right) * std::min(height[left], height[right]);
         maxArea = std::max(maxArea, curArea);
-        if (height[left] < height[right]) {
+        if (height[left] < height[right])
+        {
             left++;
-        } else {
+        }
+        else
+        {
             right--;
         }
     }
@@ -319,11 +332,12 @@ void LRUCache::put(int key, int value)
 
 ListNode *reverseList(ListNode *head)
 {
-    ListNode* dummyHead = new ListNode();
+    ListNode *dummyHead = new ListNode();
 
-    ListNode* cur = head;
-    while (cur) {
-        ListNode* next = cur->next;
+    ListNode *cur = head;
+    while (cur)
+    {
+        ListNode *next = cur->next;
         ListNode *preFirst = dummyHead->next;
         dummyHead->next = cur;
         cur->next = preFirst;
@@ -332,19 +346,45 @@ ListNode *reverseList(ListNode *head)
     return dummyHead->next;
 }
 
-
-int rob(std::vector<int>& nums) {
-    if (nums.size() == 1) {
+int rob(std::vector<int> &nums)
+{
+    if (nums.size() == 1)
+    {
         return nums[0];
     }
     int p = nums[0];
     int pp = std::max(nums[1], nums[0]);
-    for (int x= 2; x < nums.size(); x++) {
+    for (int x = 2; x < nums.size(); x++)
+    {
         int cur = std::max(pp, p + nums[x]);
         p = pp;
         pp = cur;
     }
     return pp;
-
 }
 
+int deleteAndEarn(std::vector<int> &nums)
+{
+    std::map<int,int> countMap;
+    for (int num : nums)
+    {
+        countMap[num]++;
+    }
+    int maxNum = 0;
+    for (const auto &pair : countMap)
+    {
+        maxNum = std::max(maxNum, pair.first);
+    }
+    std::vector<int> dp(maxNum + 1, 0);
+    for (const auto &pair : countMap)
+    {
+        int num = pair.first;
+        int count = pair.second;
+        dp[num] = num * count;
+    }
+    for (int i = 2; i <= maxNum; i++)
+    {
+        dp[i] = std::max(dp[i - 1], dp[i] + dp[i - 2]);
+    }
+    return dp[maxNum];
+}

@@ -56,4 +56,10 @@ std::vector<int> maxSubsequence(std::vector<int>& nums, int k);
 You are a professional robber planning to rob houses along a street. Each house has a certain amount
 */
 int rob(std::vector<int>& nums);
+
+/*
+# 740 Delete and Earn
+You are given an integer array nums. You want to maximize the number of points you get by
+*/
+int deleteAndEarn(std::vector<int>& nums);
 #endif // __ALGORITHM_H__
