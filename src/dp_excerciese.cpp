@@ -317,18 +317,18 @@ int maximalSquare(vector<vector<char>> &matrix)
     return maxSide * maxSide;
 }
 
-int rob(vector<int> &nums)
-{
-    if (nums.size() == 1) {
-        return nums[0]; // If there's only one house, return its value
-    }
-    int s = nums[0];
-    int ss = max(nums[0], nums[1]); // Initialize the second house value
-    for (int i = 2; i < nums.size(); i++)
-    {
-        int cur = max(ss, s + nums[i]); // Calculate the maximum value for the current house
-        s = ss; // Update the previous house value
-        ss = cur; // Update the current house value
-    }
-    return ss; // Return the maximum value after processing all houses
-}
+// int rob(vector<int> &nums)
+// {
+//     if (nums.size() == 1) {
+//         return nums[0]; // If there's only one house, return its value
+//     }
+//     int s = nums[0];
+//     int ss = max(nums[0], nums[1]); // Initialize the second house value
+//     for (int i = 2; i < nums.size(); i++)
+//     {
+//         int cur = max(ss, s + nums[i]); // Calculate the maximum value for the current house
+//         s = ss; // Update the previous house value
+//         ss = cur; // Update the current house value
+//     }
+//     return ss; // Return the maximum value after processing all houses
+// }
